@@ -1,0 +1,94 @@
+[bridge]
+
+;
+; core configuration options
+;
+
+;
+; listener_port
+; port to listen for incoming feed requests
+;
+listener_port=7789
+
+;
+; listener_address
+; ipv4 address to listen; defaults to 127.0.0.1
+; 0.0.0.0 binds to all interfaces
+;
+listener_address=0.0.0.0
+
+;
+; feed_host
+; the IP address of this machine for Cb to contact with feed requests
+;
+feed_host=127.0.0.1
+
+;
+; binary_filter_query
+; Additional query options to filter only binaries of interest to the reversinglabs connector
+;binary_filter_query=is_executable_image:true -(digsig_publisher:"Microsoft Corporation" and digsig_result:"Signed")
+
+; Concurrency settings
+;
+; The following two parameters control how many concurrent queries will be
+; performed against the ReversingLabs server. The "quick_scan_threads" setting
+; specifies how many threads will be querying the reversinglabs appliance via
+; file hash at once. The "deep_scan_threads" setting specifies how many
+; full file scans can be actively "in flight" at a given time. The default
+; is that three files can be analyzed in parallel at any given time.
+;
+; ***WARNING***
+;
+; By setting reversinglabs_deep_scan_threads to GREATER THAN zero and submit_full_binaries to 1, you will be submitting
+; FULL binaries to ReversingLabs A1000 for analysis. This is different from reversinglabs_quick_scan_threads which ONLY submit the
+; HASH to A1000.
+;
+
+reversinglabs_quick_scan_threads=2
+;reversinglabs_deep_scan_threads=0
+;submit_full_binaries=0
+
+
+;
+; reversinglabs A1000 API token
+; This key is given to you from reversinglabs
+; it can be found by connecting to your reversinglabs a1000 instance.
+;
+
+reversinglabs_api_token=PASSWORD
+
+
+;
+; reversinglabs URL
+; url for reversinglabs api host
+reversinglabs_api_host=
+
+
+;
+; legacy_feed_directory
+; Uncomment this and set to the directory containing feed reports from an earlier version of this connector
+;
+;legacy_feed_directory=
+
+;
+; Carbon Black Enterprise Server options
+;
+
+;
+; Carbon Black Enterprise Server URL
+;
+carbonblack_server_url=https://127.0.0.1/
+
+;
+; Carbon Black Enterprise Server API Token
+;
+carbonblack_server_token=
+
+;
+; Carbon Black Enterprise Server SSL Verfication
+;
+carbonblack_server_sslverify=0
+
+; debug options available to set
+; 0 = info, 1 = debug
+debug=1
