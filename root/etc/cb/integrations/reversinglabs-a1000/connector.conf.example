@@ -91,4 +91,7 @@ carbonblack_server_sslverify=0
 
 ; debug options available to set
 ; 0 = info, 1 = debug
+
+;days_rescan
+days_rescan=20
 debug=1
